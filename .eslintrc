@@ -11,6 +11,7 @@
   "rules": {
     "no-unused-vars": "error",
     "comma-dangle": ["error", "never"],
+    "generator-star-spacing": "off",
     "space-before-function-paren": "off",
     "no-implicit-globals": "error",
     "quotes": ["error", "single"],
