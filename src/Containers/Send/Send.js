@@ -5,6 +5,7 @@ function Send ({ send }) {
   let input;
   return (
     <div className="sendMessageBox">
+      <h3>Type here:</h3>
       <input
         onKeyPress={(e) => {
         if (e.key === 'Enter') {

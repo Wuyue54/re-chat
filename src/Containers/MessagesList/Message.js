@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 function Message ({ message, author }) {
   return (
-    <p>
-      <i>{author}</i>: { message }
+    <p className={`message ${author === 'Me' ? 'mine' : 'others'}`}>
+      <i>{author}</i><span>:</span> { message }
     </p>
   );
 }
