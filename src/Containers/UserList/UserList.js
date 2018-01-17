@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function UserList ({ users }) {
-  console.log(users);
   return (
     <div className="usersList">
       <ul>
