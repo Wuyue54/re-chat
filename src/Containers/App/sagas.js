@@ -12,15 +12,25 @@ function socketSendMessage (socket, action) {
   });
 }
 
-export function * sendNewMessSage (socket, action) {
+export function * sendNewMessSage (socket, username, action) {
   try {
-    console.log(action);
-    yield call(socketSendMessage, socket, action);
+    const actionToSocket = {
+      ...action,
+      author: username
+    };
+    yield call(socketSendMessage, socket, actionToSocket);
   } catch (error) {
     console.log(error); // TODO: need better error handler
   }
 }
 
-export default function * watchSendMessageSaga (socket) {
-  yield takeEvery(ADD_MESSAGE, sendNewMessSage, socket);
+export function * watchSendMessageSaga (socket, username) {
+  yield takeEvery(ADD_MESSAGE, sendNewMessSage, socket, username);
+}
+
+export default function getSagas (config) {
+  const { socket, username } = config;
+  return [
+    watchSendMessageSaga(socket, username)
+  ];
 }

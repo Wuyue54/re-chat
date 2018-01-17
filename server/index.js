@@ -6,16 +6,15 @@ app.get('/', (req, res) => {
   res.send('hi');
 });
 
-let users = [];
+const users = [];
 
 io.on('connection', (socket) => {
   socket.on('message', (message) => {
     const action = JSON.parse(message);
-    console.log(action);
     switch (action.type) {
       case 'ADD_USER': {
-        const index = users.length;
-        users.push({ name: action.name, id: index + 1 });
+        const { name, id } = action;
+        users.push({ name, id });
         socket.send(JSON.stringify({
           type: 'USERS_LIST',
           users
@@ -27,11 +26,11 @@ io.on('connection', (socket) => {
         break;
       }
       case 'ADD_MESSAGE': {
-        console.log('bc');
         socket.broadcast.send(JSON.stringify({
           type: 'ADD_MESSAGE',
           message: action.message,
-          author: action.author
+          author: action.author,
+          id: action.id
         }));
         break;
       }
@@ -40,12 +39,17 @@ io.on('connection', (socket) => {
       }
     }
   });
-});
 
-io.on('close', () => {
-  console.log('asdf');
+  socket.on('disconnect', () => {
+    const index = users.findIndex(user => user.id === socket.id);
+    users.splice(index, 1);
+    socket.broadcast.send(JSON.stringify({
+      type: 'USERS_LIST',
+      users
+    }));
+  });
 });
 
 http.listen(8080, () => {
-  console.log('listening on *: 8080');
+  console.log('socket is listening on port: 8080');
 });

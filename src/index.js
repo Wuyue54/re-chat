@@ -9,7 +9,7 @@ import './index.css';
 import App from './Containers/App';
 import registerServiceWorker from './registerServiceWorker';
 import reducers from './reducers';
-import appSaga from './Containers/App/sagas';
+import setupSaga from './sagas';
 
 import initialSocket from './socket';
 
@@ -20,8 +20,9 @@ store.subscribe(() => {
   console.log(store.getState());
 });
 
-const socket = initialSocket(store.dispatch, sillyname());
-sagaMiddleware.run(appSaga, socket);
+const username = sillyname();
+const socket = initialSocket(store.dispatch, username);
+sagaMiddleware.run(setupSaga, { socket, username });
 
 ReactDOM.render(
   <Provider store={store}>

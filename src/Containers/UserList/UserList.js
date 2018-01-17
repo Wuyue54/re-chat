@@ -3,19 +3,19 @@ import PropTypes from 'prop-types';
 
 function UserList ({ users }) {
   return (
-    <aside id="sidebar" className="sidebar">
+    <div className="usersList">
       <ul>
         {users.map(user => (
           <li key={user.id}>{user.name}</li>
         ))}
       </ul>
-    </aside>
+    </div>
   );
 }
 
 UserList.propTypes = {
   users: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired
   }).isRequired).isRequired
 };

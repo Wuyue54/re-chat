@@ -5,26 +5,23 @@ import {
   USERS_LIST
 } from './constants';
 
-let nextMessageId = 0;
-let nextUserId = 0;
-
-export const addMessage = (message, author) => ({
+export const addMessage = (message, author, id) => ({
   type: ADD_MESSAGE,
-  id: nextMessageId++,
+  id,
   message,
   author
 });
 
-export const addUser = name => ({
+export const addUser = (name, id) => ({
   type: ADD_USER,
-  id: nextUserId++,
+  id,
   name
 });
 
 
-export const messageReceived = (message, author) => ({
+export const messageReceived = (message, author, id) => ({
   type: MESSAGE_RECEIVED,
-  id: nextMessageId++,
+  id,
   message,
   author
 });

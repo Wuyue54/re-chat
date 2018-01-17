@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
+import uuid from 'uuid/v1';
 import Send from './Send';
 import { addMessage } from '../App/actions';
 
+
 const mapDispatchToProps = dispatch => ({
   send: (message, author) => {
-    console.log(message);
-    dispatch(addMessage(message, author));
+    dispatch(addMessage(message, author, uuid()));
   }
 });
 

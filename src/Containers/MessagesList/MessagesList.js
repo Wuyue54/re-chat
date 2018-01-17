@@ -4,7 +4,7 @@ import Message from './Message';
 
 function MessagesList ({ messages }) {
   return (
-    <section id="messages-list">
+    <div className="messagesList">
       <ul>
         {
           messages.map(message => (
@@ -16,13 +16,13 @@ function MessagesList ({ messages }) {
           ))
         }
       </ul>
-    </section>
+    </div>
   );
 }
 
 MessagesList.propTypes = {
   messages: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     message: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired
   }).isRequired).isRequired
