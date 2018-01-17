@@ -1,11 +1,19 @@
-const app = require('express')();
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
+const express = require('express');
+const http = require('http');
+const socketIO = require('socket.io');
 
+const app = express();
+const server = http.Server(app);
+const io = socketIO(server);
+
+app.set('port', process.env.PORT || 8080);
+
+app.use(express.static(`${__dirname}/../build`));
 app.get('/', (req, res) => {
-  res.send('hi');
+  res.sendFile('/index.html');
 });
 
+// TODO: handle storage.
 const users = [];
 
 io.on('connection', (socket) => {
@@ -50,6 +58,6 @@ io.on('connection', (socket) => {
   });
 });
 
-http.listen(8080, () => {
+server.listen(app.get('port'), () => {
   console.log('socket is listening on port: 8080');
 });
