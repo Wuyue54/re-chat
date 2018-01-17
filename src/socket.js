@@ -16,10 +16,10 @@ function setupSocket (dispatch, username) {
   const socket = openSocket('http://localhost:8080');
 
   socket.on('connect', () => {
-    console.log('connecting');
     socket.send(JSON.stringify({
       type: ADD_USER,
-      name: username
+      name: username,
+      id: socket.id
     }));
   });
 
@@ -27,7 +27,7 @@ function setupSocket (dispatch, username) {
     const action = JSON.parse(message);
     switch (action.type) {
       case ADD_MESSAGE:
-        dispatch(messageReceived(action.message, action.author));
+        dispatch(messageReceived(action.message, action.author, action.id));
         break;
       case USERS_LIST:
         dispatch(populateUsersList(action.users));

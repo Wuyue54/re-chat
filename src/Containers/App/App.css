@@ -8,30 +8,53 @@ body {
   font-family: "Press Start 2P";
 }
 
-#container {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-areas: "sidebar main";
+.container {
+  display: flex;
   width: 100vw;
   height: 100vh;
 }
-#main {
-  grid-area: main;
+
+.main {
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+  height: 100vh;
 }
-#new-message {
-  position: fixed;
-  bottom: 0;
+
+.messagesList {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  background-color: #000;
+  color: #fff;
+}
+
+.sendMessageBox {
+  margin-top: auto;
+  margin-bottom: 0;
+  padding: 1rem;
+  border-top: 2px dotted #fff01c;
+  background-color: #000;
+}
+
+.sendMessageBox input {
   width: 100%;
-  padding: 5px;
-  margin-left: 0px;
-  border-top: 1px solid #3f3f3f;
+  background-color: #000;
+  outline: none;
+  border: none;
+  font-family: "Press Start 2P";
+  color: #fff;
 }
-#messages-list {
-  padding: 5px 0 0 5px;
-}
-#sidebar {
-  grid-area: sidebar;
-  padding: 5px 0 0 5px;
-  border-right: 1px solid #3f3f3f;
+
+.usersList {
+  flex: 1;
   height: 100%;
+  padding: 1rem;
+  border-right: 2px dotted #fff01c;
+  background-color: #000;
+  color: #01DD06;
+}
+
+.usersList ul {
+  list-style: none;
 }

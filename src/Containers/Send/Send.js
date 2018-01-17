@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function Send ({ send }) {
   let input;
   return (
-    <section id="new-message">
+    <div className="sendMessageBox">
       <input
         onKeyPress={(e) => {
         if (e.key === 'Enter') {
@@ -17,7 +17,7 @@ function Send ({ send }) {
         input = node;
       }}
       />
-    </section>
+    </div>
   );
 }
 
