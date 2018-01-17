@@ -16,10 +16,6 @@ import initialSocket from './socket';
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducers, applyMiddleware(sagaMiddleware));
 
-store.subscribe(() => {
-  console.log(store.getState());
-});
-
 const username = sillyname();
 const socket = initialSocket(store.dispatch, username);
 sagaMiddleware.run(setupSaga, { socket, username });
