@@ -1,13 +1,13 @@
 import {
   ADD_MESSAGE,
-  MESSAGE_RECEIVED
+  MESSAGE_FROM_SERVER
 } from '../App/constants';
 
 
 function messagesReducer (state = [], action) {
   switch (action.type) {
     case ADD_MESSAGE:
-    case MESSAGE_RECEIVED: {
+    case MESSAGE_FROM_SERVER: {
       return state.concat([
         {
           message: action.message,
