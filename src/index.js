@@ -7,7 +7,7 @@ import sillyname from 'sillyname';
 
 import './index.css';
 import App from './Containers/App';
-import registerServiceWorker from './registerServiceWorker';
+// import registerServiceWorker from './registerServiceWorker';
 import reducers from './reducers';
 import setupSaga from './sagas';
 
@@ -27,4 +27,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-registerServiceWorker();
+// registerServiceWorker();

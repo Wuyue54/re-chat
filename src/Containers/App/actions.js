@@ -1,6 +1,6 @@
 import {
   ADD_MESSAGE,
-  MESSAGE_RECEIVED,
+  MESSAGE_FROM_SERVER,
   ADD_USER,
   USERS_LIST
 } from './constants';
@@ -20,7 +20,7 @@ export const addUser = (name, id) => ({
 
 
 export const messageReceived = (message, author, id) => ({
-  type: MESSAGE_RECEIVED,
+  type: MESSAGE_FROM_SERVER,
   id,
   message,
   author

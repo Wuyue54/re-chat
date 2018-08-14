@@ -8,15 +8,15 @@ function Send ({ send }) {
       <h3>Type here:</h3>
       <input
         onKeyPress={(e) => {
-        if (e.key === 'Enter') {
-          send(input.value, 'Me');
-          input.value = '';
-        }
-      }}
+          if (e.key === 'Enter') {
+            send(input.value, 'Me');
+            input.value = '';
+          }
+        }}
         type="text"
         ref={(node) => {
-        input = node;
-      }}
+          input = node;
+        }}
       />
     </div>
   );
